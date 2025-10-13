@@ -16,7 +16,15 @@ import java.time.LocalDateTime;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Table(
+        name = "patient",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "unique_patient_name_birthdate", columnNames = {"name", "gender"})
+        },
+        indexes = {
+                @Index(name = "idx_patient_gender", columnList = "gender")
+        }
+)
 public class Patient {
 
     @Id
@@ -33,4 +41,10 @@ public class Patient {
 
     private LocalDate dob;
 
+    @Enumerated(EnumType.STRING)
+    private BloodGroup bloodGroup;
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
 }
