@@ -31,7 +31,7 @@ public interface PatientRepo extends JpaRepository<Patient, Long> {
     @Query("select p from Patient p where p.birthDate > :birthDate")
     List<Patient> findByBornAfterDate(@Param("birthDate") LocalDate birthDate);
 
-    // gives all type of blood group in db and their row count cv
+    // gives all type of blood group in db and their row count
     @Query("select new com/pranav/SpringDataJPA/HospitalManagement/dtos/BloodGroupCountResponseDto.java" +
             "(p.bloodGroup," + " Count(p)) from Patient p group by p.bloodGroup")
     List<BloodGroupCountResponseDto> countEachBloodGroupType();
