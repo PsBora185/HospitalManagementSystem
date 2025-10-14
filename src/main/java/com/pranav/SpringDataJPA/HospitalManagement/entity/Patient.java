@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @Table(
         name = "patient",
         uniqueConstraints = {
-                @UniqueConstraint(name = "unique_patient_name_birthdate", columnNames = {"name", "gender"})
+                @UniqueConstraint(name = "unique_patient_name_gender", columnNames = {"name", "gender"})
         },
         indexes = {
                 @Index(name = "idx_patient_gender", columnList = "gender")
