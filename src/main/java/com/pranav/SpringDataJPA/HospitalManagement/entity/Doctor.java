@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -24,5 +26,7 @@ public class Doctor {
     @Column(nullable = false, unique = true, length = 100)
     private String email;
 
+    @ManyToMany(mappedBy = "doctors")
+    private Set<Department> departments;
 
 }
