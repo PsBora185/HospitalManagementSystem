@@ -4,7 +4,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -27,6 +30,10 @@ public class Doctor {
     private String email;
 
     @ManyToMany(mappedBy = "doctors")
+    @ToString.Exclude
     private Set<Department> departments;
 
+    @OneToMany(mappedBy = "doctor")
+    @ToString.Exclude
+    private List<Appointment> appointments = new ArrayList<>();
 }
