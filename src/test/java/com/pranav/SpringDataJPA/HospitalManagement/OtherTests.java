@@ -1,5 +1,6 @@
 package com.pranav.SpringDataJPA.HospitalManagement;
 
+import com.pranav.SpringDataJPA.HospitalManagement.dtos.AppointmentResponseDto;
 import com.pranav.SpringDataJPA.HospitalManagement.entity.Appointment;
 import com.pranav.SpringDataJPA.HospitalManagement.entity.Insurance;
 import com.pranav.SpringDataJPA.HospitalManagement.entity.Patient;
@@ -12,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @SpringBootTest
 public class OtherTests {
@@ -44,16 +46,21 @@ public class OtherTests {
 
     @Test
     public void testAppointment(){
-        Appointment appointment = Appointment.builder()
-                .appointmentTime(LocalDateTime.of(2025,11,4,2,30))
-                .reason("Tests")
-                .build();
 
-        var newAppointment = appointmentService.createAppointment(appointment,1L, 2L);
-        System.out.println(appointment);
+//        Appointment appointment = Appointment.builder()
+//                .appointmentTime(LocalDateTime.of(2025,11,4,2,30))
+//                .reason("Tests")
+//                .build();
+//
+//        var newAppointment = appointmentService.createAppointment(appointment,1L, 2L);
+//        System.out.println(appointment);
+//
+//        var reassigned = appointmentService.reasignAppointment(appointment.getId(),2L);
+//        System.out.println(reassigned);
 
-        var reassigned = appointmentService.reasignAppointment(appointment.getId(),2L);
-        System.out.println(reassigned);
+        List<AppointmentResponseDto> appointments = appointmentService.getAllAppointmentsOfDoctor(1L);
+
+        System.out.println(appointments);
     }
 
     @Test
