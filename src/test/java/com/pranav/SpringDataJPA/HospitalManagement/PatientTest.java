@@ -1,6 +1,7 @@
 package com.pranav.SpringDataJPA.HospitalManagement;
 
 import com.pranav.SpringDataJPA.HospitalManagement.dtos.BloodGroupCountResponseDto;
+import com.pranav.SpringDataJPA.HospitalManagement.dtos.PatientResponseDto;
 import com.pranav.SpringDataJPA.HospitalManagement.entity.Patient;
 import com.pranav.SpringDataJPA.HospitalManagement.repository.PatientRepository;
 import com.pranav.SpringDataJPA.HospitalManagement.service.PatientService;
@@ -29,7 +30,6 @@ public class PatientTest {
         List<Patient> patientList = patientRepository.findAllPatientsWithAppointments();
         System.out.println(patientList);
 
-
     }
 
     @Test
@@ -47,9 +47,9 @@ public class PatientTest {
 //
 //        List<Patient> patientList = patientRepository.findByBornAfterDate(LocalDate.of(1993, 3, 14));
 
-        Page<Patient> patientList = patientRepository.findAllPatients(PageRequest.of(1, 2, Sort.by("name")));
+        List<PatientResponseDto> patientList = patientService.getAllPatients(0,10);
 
-        for(Patient patient: patientList) {
+        for(PatientResponseDto patient: patientList) {
             System.out.println(patient);
         }
 
